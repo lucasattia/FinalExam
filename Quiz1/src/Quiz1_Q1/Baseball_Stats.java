@@ -1,11 +1,6 @@
 package Quiz1_Q1;
 import java.util.Scanner;
 public class Baseball_Stats {
-	private double battingAverage;
-	private double onBasePercentage;
-	private int totalBases;
-	private double sluggingPercentage;
-	private double onBaseSlugging;
 	private int atBats;
 	private int hits;
 	private int doubles;
@@ -14,44 +9,49 @@ public class Baseball_Stats {
 	private int runs; 
 	private int walks;
 	private int singles;
+	private String name;
 	public Baseball_Stats() {
 		Scanner stdin = new Scanner(System.in);
+		System.out.println("Please enter player name:");
+		name = stdin.nextLine();
+		System.out.println("Please enter number of at bats:");
 		atBats = stdin.nextInt();
+		System.out.println("Please enter number of hits:");
 		hits = stdin.nextInt();
+		System.out.println("Please enter number of doubles:");
 		doubles = stdin.nextInt();
+		System.out.println("Please enter number of triples:");
 		triples = stdin.nextInt();
+		System.out.println("Please enter number of homers:");
 		homers = stdin.nextInt();
+		System.out.println("Please enter number of runs:");
 		runs = stdin.nextInt();
+		System.out.println("Please enter number of walks:");
 		walks = stdin.nextInt();
 		stdin.close();
 	}
-	public void set_battingAverage() {
-		battingAverage = (double) hits/atBats;
-		System.out.println(battingAverage);
+	public double battingAverage() {
+		return (double) hits/atBats;
 	}
-	public void set_onBasePercentage() {
-		onBasePercentage = (double) (walks+ hits)/(atBats+ walks);
-		System.out.println(onBasePercentage);
+	public double onBasePercentage() {
+		return (double) (walks+ hits)/(atBats+ walks);
 	}
-	public void set_totalBases() {
-		singles = hits - doubles - triples - homers;
-		totalBases = (singles) + (2*doubles) + (3*triples)+ (4*homers);
-		System.out.println(totalBases);
+	public int totalBases() {
+	 singles = hits - doubles - triples - homers;
+	return (singles) + (2*doubles) + (3*triples)+ (4*homers);
 	}
-	public void set_sluggingPercentage() {
-		sluggingPercentage = (double) totalBases/atBats;
-		System.out.println(sluggingPercentage);
+	public double sluggingPercentage() {
+		return (double) totalBases()/atBats;
 	}
-	public void set_onBaseSlugging() {
-		onBaseSlugging = (double) onBasePercentage + sluggingPercentage;
-		System.out.println(onBaseSlugging);
+	public double onBaseSlugging() {
+		return (double) sluggingPercentage() + onBasePercentage();
 	}
 	public static void main(String [] args) {
 		Baseball_Stats myStats = new Baseball_Stats();
-		myStats.set_battingAverage();
-		myStats.set_onBasePercentage();
-		myStats.set_totalBases();
-		myStats.set_sluggingPercentage();
-		myStats.set_onBaseSlugging();
+		System.out.println("BA: " + myStats.battingAverage());
+		System.out.println("OBP: " + myStats.onBasePercentage());
+		System.out.println("TB: " + myStats.totalBases());
+		System.out.println("SLG: " + myStats.sluggingPercentage());
+		System.out.println("OBS: " + myStats.onBaseSlugging());
 	}
 }
