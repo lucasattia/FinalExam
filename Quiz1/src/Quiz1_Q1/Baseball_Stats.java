@@ -37,7 +37,7 @@ public class Baseball_Stats {
 		return (double) (walks+ hits)/(atBats+ walks);
 	}
 	public int totalBases() {
-	 singles = hits - doubles - triples - homers;
+	singles = hits - doubles - triples - homers;
 	return (singles) + (2*doubles) + (3*triples)+ (4*homers);
 	}
 	public double sluggingPercentage() {
